@@ -1,0 +1,241 @@
+data = {
+   "Super Mario 64": {
+      "Genres": [
+         "Platformer"
+      ]
+   },
+   "Mario Kart 64": {
+      "Genres": [
+         "Racing"
+      ]
+   },
+   "GoldenEye 007": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "The Legend of Zelda Ocarina of Time": {
+      "Genres": [
+         "Action-Adventure"
+      ]
+   },
+   "Super Smash Bros": {
+      "Genres": [
+         "Fighter"
+      ]
+   },
+   "Pokemon Stadium": {
+      "Genres": [
+         "RPG"
+      ]
+   },
+   "Donkey Kong 64": {
+      "Genres": [
+         "Platformer"
+      ]
+   },
+   "Diddy Kong Racing": {
+      "Genres": [
+         "Racing"
+      ]
+   },
+   "Star Fox 64": {
+      "Genres": [
+         "Arcade",
+         "Shooter"
+      ]
+   },
+   "Banjo Kazooie": {
+      "Genres": [
+         "Platformer"
+      ]
+   },
+   "Pokemon Snap": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "The Legend of Zelda Majoras Mask": {
+      "Genres": [
+         "Action-Adventure"
+      ]
+   },
+   "Star Wars Episode I Racer": {
+      "Genres": [
+         "Racing"
+      ]
+   },
+   "Banjo Tooie": {
+      "Genres": [
+         "Platformer"
+      ]
+   },
+   "Wave Race 64": {
+      "Genres": [
+         "Sports",
+         "Racing",
+         "Simulation"
+      ]
+   },
+   "Yoshis Story": {
+      "Genres": [
+         "Platformer"
+      ]
+   },
+   "Mario Party": {
+      "Genres": [
+         "Party"
+      ]
+   },
+   "Star Wars Shadows of the Empire": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "Pokemon Stadium 2": {
+      "Genres": [
+         "RPG"
+      ]
+   },
+   "Perfect Dark": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "Mario Party 2": {
+      "Genres": [
+         "Party"
+      ]
+   },
+   "Mario Tennis": {
+      "Genres": [
+         "Sports"
+      ]
+   },
+   "Star Wars Rogue Squadron": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "1080 Snowboarding": {
+      "Genres": [
+         "Sports",
+         "Racing",
+         "Simulation"
+      ]
+   },
+   "Excitebike 64": {
+      "Genres": [
+         "Arcade",
+         "Sports",
+         "Racing"
+      ]
+   },
+   "Mario Party 3": {
+      "Genres": [
+         "Party"
+      ]
+   },
+   "WCW nWo Revenge": {
+      "Genres": [
+         "Sports",
+         "Fighter"
+      ]
+   },
+   "Hey You Pikachu": {
+      "Genres": [
+         "Simulation"
+      ]
+   },
+   "Kirby 64 The Crystal Shards": {
+      "Genres": "Platformer"
+   },
+   "Cruisn USA": {
+      "Genres": [
+         "Sports",
+         "Racing",
+         "Simulation"
+      ]
+   },
+   "Tony Hawks Pro Skater": {
+      "Genres": [
+         "Sports",
+         "Simulation"
+      ]
+   },
+   "F1 World Grand Prix": {
+      "Genres": [
+         "Sports",
+         "Racing",
+         "Simulation"
+      ]
+   },
+   "Turok Dinosaur Hunter": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "Mario Golf": {
+      "Genres": [
+         "Sports"
+      ]
+   },
+   "Turok 2 Seeds of Evil": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "Paper Mario": {
+      "Genres": [
+         "RPG"
+      ]
+   },
+   "WCW vs nWo World Tour": {
+      "Genres": [
+         "Fighter"
+      ]
+   },
+   "Kobe Bryant in NBA Courtside": {
+      "Genres": [
+         "Sports"
+      ]
+   },
+   "WWF No Mercy": {
+      "Genres": [
+         "Sports",
+         "Fighter"
+      ]
+   },
+   "Jet Force Gemini": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "WWF WrestleMania 2000": {
+      "Genres": [
+         "Sports",
+         "Fighter"
+      ]
+   },
+   "Pilotwings 64": {
+      "Genres": [
+         "Simulation"
+      ]
+   },
+   "FZero X": {
+      "Genres": [
+         "Arcade",
+         "Racing"
+      ]
+   },
+   "007 The World Is Not Enough": {
+      "Genres": [
+         "Shooter"
+      ]
+   },
+   "Namco Museum 64": {
+      "Genres": [
+         "Arcade"
+      ]
+   }
+}
