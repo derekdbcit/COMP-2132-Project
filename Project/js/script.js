@@ -1,18 +1,23 @@
 /**
+ * @author Derek D'Souza 
+ * @credit Nintendo Co., Ltd., Rare Ltd., Microsoft Co. for materials used
+ */
+
+/**
  * --------------------------------------------------------Animation------------------------------------------------------
  */
 
-// symbolic constants
-const oneSecond = 1000;
+// Symbolic constants
 const fps = 24;
 const firstIndex = 0;
+const imageQuantity = 21;
 
 /**
  * Get Images
  */
 var images = [];
 
-for (let i = 1; i <= 21; i++) {
+for (let i = 1; i <= imageQuantity; i++) {
 
     images.push(`images/bk${i}.png`);
 }
@@ -20,37 +25,69 @@ for (let i = 1; i <= 21; i++) {
 /**
  * Animate Images
  */
-var stop = false; // image is static by default
-var imagesIndex = firstIndex; // first image in images
+var stop = false; // Image is static by default
+var imagesIndex = firstIndex; // First image in images
 
 function animate() {
 
-    document.slide.src = images[imagesIndex]; // static frame is first frame
+    document.slide.src = images[imagesIndex]; // Static frame is first frame
 
-    console.log((animationStage));
-
-    if (imagesIndex < animationStage) { // increments during animation
+    if (imagesIndex < animationStage) { // Animates in increments
         imagesIndex++;
     } else {
         stop = true;
-        animationStage += 4;
+        animationStage += 4; // Animation is only enabled the second wrong guess
     }
 
-    if (stop) { // if paused
+    if (stop) { // If paused
         cancelAnimationFrame(animate);
         stop = false;
     } else {
-        setTimeout(() => { // caps animation to fps constant
-            requestAnimationFrame(animate); // resumes
-        }, oneSecond / fps);
+        setTimeout(() => { // Caps animation to fps constant
+            requestAnimationFrame(animate); // Resumes
+        }, 1000 / fps);
     }
 }
+
+/**
+ * Popup
+ */
+
+// When the user waits 3 seconds, open the popUp 
+setTimeout(function () {
+
+    if (!start) {
+        $("#popUp").fadeIn(1000);
+    }
+}, 3000);
+
+// When the user clicks on <span> (x), close the popUp
+$("#close").on("click", function () {
+    $("#popUp").css("display", "none");
+})
 
 /**
  * --------------------------------------------------------Hangman--------------------------------------------------------
  */
 
-var guesses = 6; // errors you can make until you lose
+// Symbolic constants
+const chosenTitle = chooseTitle(data);
+
+const correct = $(".sfx")[0];
+const incorrect = $(".sfx")[1];
+const win = new $(".sfx")[2];
+const lose = new $(".sfx")[3];
+
+/**
+ * Game object, stores title and genres
+ */
+const game = {
+
+    title: chosenTitle,
+    genres: data[chosenTitle]["Genres"].join(", ")
+}
+
+var guesses = 6; // Errors you can make until you lose
 var animationStage = 0;
 
 /**
@@ -67,7 +104,7 @@ for (let i = 0; i < Object.keys(data).length; i++) {
 /**
  * Chooses a title of a random Nintendo 64 game
  * @param {*} dictionary
- * @returns title of a random Nintendo 64 game
+ * @returns Title of a random Nintendo 64 game
  */
 function chooseTitle(dictionary) {
 
@@ -76,20 +113,18 @@ function chooseTitle(dictionary) {
     return keys[Math.floor(Math.random() * keys.length)]
 }
 
-var chosenTitle = chooseTitle(data); // stores a random title
+var chosenTitleBank = []; // For the word being guessed's innherHTML
 
-var chosenTitleBank = []; // for the word being guessed's innherHTML
+for (let i = 0; i < game.title.length; i++) { // Placeholders at the beginning of the game
 
-for (let i = 0; i < chosenTitle.length; i++) { // placeholders at the beginning of the game
-
-    if (chosenTitle.charAt(i) == " ") {
+    if (game.title.charAt(i) == " ") {
         chosenTitleBank.push(" ");
     } else {
         chosenTitleBank.push("_");
     }
 }
 
-var characterBank = [ // characters that can be chosen
+var characterBank = [ // Characters that can be chosen
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
     "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
@@ -98,18 +133,19 @@ var characterBank = [ // characters that can be chosen
 /**
  * When an A-Z or 0-9 key is clicked
  */
-if (guesses != 0 || $("#word").html() == chosenTitle.toUpperCase()) {
+if (guesses != 0 || $("#title").html() == game.title.toUpperCase()) {
 
 }
 window.addEventListener("keydown", function (e) {
 
+    start = true;
     let key = e.key.toUpperCase();
 
-    if (characterBank.includes(key) && guesses != 0 && $("#word").html() != chosenTitle.toUpperCase()) {
+    if (characterBank.includes(key) && guesses != 0 && $("#title").html() != game.title.toUpperCase()) {
 
-        characterBank.splice(characterBank.indexOf(key), 1); // remove chosen character from the available bank
-        $("#bank").html(characterBank.join(" ")); // update the html of the bank
-        checkCharacter(key); // check if guess is right or wrong
+        characterBank.splice(characterBank.indexOf(key), 1); // Remove chosen character from the available bank
+        $("#bank").html(characterBank.join(" ")); // Update the html of the bank
+        checkCharacter(key); // Check if guess is right or wrong
     }
 })
 
@@ -119,11 +155,11 @@ window.addEventListener("keydown", function (e) {
  */
 function checkCharacter(character) {
 
-    if (chosenTitle.toUpperCase().includes(character)) { // right guess
+    if (game.title.toUpperCase().includes(character)) { // right guess
 
         rightGuess(character);
 
-    } else { // wrong guess
+    } else { // Wrong guess
 
         wrongGuess();
     }
@@ -131,25 +167,29 @@ function checkCharacter(character) {
 
 /**
  * When the player guesses right
- * @param {*} character the character to add to the secret word html
+ * @param {*} character The character to add to the secret word html
  */
 function rightGuess(character) {
+
+    correct.play(); // "Correct" sound effect feedback
 
     /**
      * Looks for character in the title
      */
-    for (let i = 0; i < chosenTitle.toUpperCase().length; i++) {
+    for (let i = 0; i < game.title.toUpperCase().length; i++) {
 
-        if (chosenTitle.toUpperCase().charAt(i) == character) {
+        if (game.title.toUpperCase().charAt(i) == character) {
             chosenTitleBank[i] = character;
-            $("#word").html(chosenTitleBank.join(""));
+            $("#title").html(chosenTitleBank.join(""));
         }
     }
 
     /**
      * If the player is able to guess the word
      */
-    if ($("#word").html() == chosenTitle.toUpperCase()) {
+    if ($("#title").html() == game.title.toUpperCase()) {
+
+        win.play(); // "Win" sound effect feedback
 
         /**
          * Animates in reverse
@@ -159,7 +199,7 @@ function rightGuess(character) {
         imagesIndex = animationStage - imagesIndex;
         animate();
 
-        $("#word").css("color", "green");
+        $("#title").css("color", "green");
 
         /**
          * Opportunity to restart the game
@@ -173,21 +213,25 @@ function rightGuess(character) {
  */
 function wrongGuess() {
 
+    incorrect.play(); // "Incorrect" sound effect feedback
+
     guesses -= 1;
     animate();
 
     /**
      * Update html of guesses counter
      */
-    $("#status").html("Hint: " + data[chosenTitle]["Genres"].join(", ") + ", Remaining Guesses: " + guesses);
+    $("#status").html("Hint: " + game.genres + ", Remaining Guesses: " + guesses);
 
     /**
      * If the player ran out of guesses
      */
     if (guesses == 0) {
 
-        $("#word").html(chosenTitle);
-        $("#word").css("color", "red");
+        lose.play(); // "Lose" sound effect feedback
+
+        $("#title").html(game.title);
+        $("#title").css("color", "red");
 
         /**
          * Opportunity to restart the game
@@ -196,11 +240,14 @@ function wrongGuess() {
     }
 }
 
+
 // Setup before the beginning of the game
 
-$("#bank").html(characterBank.join(" ")); // available characters
-$("#word").html(chosenTitleBank.join("")); // word to guess
+$("#bank").html(characterBank.join(" ")); // Available characters
+$("#title").html(chosenTitleBank.join("")); // Word to guess
 
 // Hint and guesses
 
-$("#status").html("Hint: " + data[chosenTitle]["Genres"].join(", ") + ", Remaining Guesses: " + guesses); 
+$("#status").html("Hint: " + game.genres + ", Remaining Guesses: " + guesses);
+
+var start = false;

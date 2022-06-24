@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="derek d'souza">
+<meta name="credit" content="Nintendo Co., Ltd., Rare Ltd., Microsoft Co. for materials used">
 
 <head>
-    <link rel="stylesheet" href="css/styles.scss">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
@@ -23,14 +25,37 @@
         <h2 id="status"></h2>
         <img id="slide" name="slide" src="images/bk1.png">
         <button id="replay" onclick="window.location.reload();">Play Again?</button>
-        <p id="word"></p>
+        <p id="title"></p>
         <p id="bank"></p>
+        <div id="popUp">
+            <h2>
+                <span id="close">&times;</span>
+                "Get N or get out"
+            </h2>
+            <p>
+                Press an alphabetic or numeric key<br>
+                to make a guess.<br><br>
+                Save Banjo and Kazooie.<br>
+                Otherwise those poachers at Microsoft<br>
+                will put down the bear and bird.<br>
+            </p>
+        </div>
+        <p>Credit to Nintendo Co., Ltd., Rare Ltd., Microsoft Co. for materials used</p>
     </div>
+    <audio class="sfx">
+        <source src="sfx/correct.mp3" type="audio/mpeg">
+    </audio>
+    <audio class="sfx">
+        <source src="sfx/incorrect.mp3" type="audio/mpeg">
+    </audio>
+    <audio class="sfx">
+        <source src="sfx/win.mp3" type="audio/mpeg">
+    </audio>
+    <audio class="sfx">
+        <source src="sfx/lose.mp3" type="audio/mpeg">
+    </audio>
     <script src="best-selling-n64-games.json"></script>
     <script src="js/script.js"></script>
-    </div><br><br>
-    </div>
-    </div>
 </body>
 
 </html>
